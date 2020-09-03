@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import com.me.relativebalance.dto.OutputReport;
 import com.me.relativebalance.dto.TransactionDetails;
 import com.me.relativebalance.service.DataParser;
 import com.me.relativebalance.service.TransactionFilter;
@@ -30,27 +31,40 @@ public class TransactionFilterImpl implements TransactionFilter {
 		List<TransactionDetails> allTransaction = this.dataParser.getAllTransaction();
 		allReversalTransactions = allTransaction.stream()
 				.filter(txn -> txn.getTransactionType().compareTo(" REVERSAL") == 0)
-				.map(txn -> txn.getRelatedTransaction()).collect(Collectors.toSet());
+				.map(txn -> txn.getRelatedTransaction().trim()).collect(Collectors.toSet());
 
 	}
 
 	@Override
-	public double getRelativeBalance(String account, Date fromDate, Date toDate) {
+	public OutputReport getRelativeBalance(String account, Date fromDate, Date toDate) {
 
-		List<TransactionDetails> transactionList = dataParser.getAllTransaction().stream().parallel()
-				.takeWhile(txn -> txn.getCreatedAt().before(toDate)).filter(txn -> txn.getCreatedAt().after(fromDate))
+		OutputReport report = new OutputReport(0.0, 0);
+		
+		List<TransactionDetails> transactionList = dataParser.getAllTransaction().stream()
+				.takeWhile(txn -> txn.getCreatedAt().before(toDate))
+				.filter(txn -> txn.getCreatedAt().after(fromDate))
+				.filter(txn -> txn.getTransactionType().trim().compareToIgnoreCase("REVERSAL") != 0)
 				.filter(txn -> txn.getFromAccountId().trim().compareTo(account) == 0
 						|| txn.getToAccountId().trim().compareTo(account) == 0)
-				.filter(txn -> !allReversalTransactions.contains(txn.getTransactionId())).collect(Collectors.toList());
+				.filter(txn -> !allReversalTransactions.contains(txn.getTransactionId().trim()))
+				.collect(Collectors.toList());
 
-		Double reduce = transactionList.parallelStream().map(txn -> {
-			if (txn.getFromAccountId().compareTo(account) == 0)
-				return txn.getAmount();
-			else
+		if(transactionList.isEmpty())
+			return report;
+		
+		Double accBalance = transactionList.parallelStream().map(txn -> {
+			if (txn.getFromAccountId().trim().compareTo(account) == 0)
 				return -txn.getAmount();
+			else
+				return txn.getAmount();
 		}).reduce(0.0, (amt1, amt2) -> amt1 + amt2);
+		
+		report.setRelativeBalance(accBalance);
+		report.setTransactionCount(transactionList.size());
+		return report;
 
-		return reduce;
+
+		
 
 	}
 }

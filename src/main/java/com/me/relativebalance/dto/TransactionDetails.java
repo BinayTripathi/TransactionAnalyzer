@@ -1,5 +1,7 @@
 package com.me.relativebalance.dto;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -15,30 +17,49 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Getter
+
 @Setter
 public class TransactionDetails {
 	
 	@JsonProperty
+	@Getter
 	String transactionId;
 	
 	@JsonProperty
+	@Getter
 	String fromAccountId;
 	
 	@JsonProperty
+	@Getter
 	String toAccountId;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss")
-	Date createdAt;
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss")
+	@JsonProperty
+	String createdAt;
 	
 	@JsonProperty
+	@Getter
 	double amount;
 	
 	@JsonProperty
+	@Getter
 	String transactionType;
 	
 	@JsonProperty
+	@Getter
 	String relatedTransaction;
+	
+	public Date getCreatedAt( ) {
+		String datePattern = "dd/MM/yyyy hh:mm:ss";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(datePattern);
+		try {
+			return simpleDateFormat.parse(this.createdAt);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 
 }

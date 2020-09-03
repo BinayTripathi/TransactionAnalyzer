@@ -1,5 +1,6 @@
 package com.me.relativebalance.service.impl;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,21 +19,29 @@ import com.me.relativebalance.service.DataParser;
 
 @Singleton
 public class CsvDataParser implements DataParser {
-	
-	private List<TransactionDetails> allTransactions;
 
-	public CsvDataParser() {
+	private List<TransactionDetails> allTransactions = null;
 
-		 this.allTransactions = new ArrayList<TransactionDetails>();
+	@Override
+	public List<TransactionDetails> getAllTransaction() {
+
+		if (null != this.allTransactions)
+			return  this.allTransactions;
+		
+		this.allTransactions = new ArrayList<TransactionDetails>();
 
 		CsvMapper csvMapper = new CsvMapper();
 		CsvSchema schema = CsvSchema.emptySchema().withHeader();
 		ObjectReader oReader = csvMapper.reader(TransactionDetails.class).with(schema);
 
-		try (Reader reader = new FileReader("C:/Study/JAVA/CodingChallange/TransactionAnalyzer/src/main/resources/transaction.csv")) {
+		try (Reader reader = new FileReader(
+				new File(getClass().getClassLoader().getResource("transaction.csv").getFile()))) {
 			MappingIterator<TransactionDetails> mapItr = oReader.readValues(reader);
 			while (mapItr.hasNext()) {
-				allTransactions.add(mapItr.next());
+				
+				TransactionDetails next = mapItr.next();
+				System.out.println(next.toString());
+				allTransactions.add(next);
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -41,11 +50,6 @@ public class CsvDataParser implements DataParser {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public List<TransactionDetails> getAllTransaction() {
-		
 		return allTransactions;
 	}
 
