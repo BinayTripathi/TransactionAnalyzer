@@ -2,7 +2,7 @@
 
 
 [![Java](https://img.shields.io/badge/Java-java-blue.svg?style=plastic)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html) | ![GitHub language count](https://img.shields.io/github/languages/count/BinayTripathi/ServiceVictoria-ChildrenInQueue.svg) | ![GitHub top language](https://img.shields.io/github/languages/top/BinayTripathi/ServiceVictoria-ChildrenInQueue.svg) |![GitHub repo size in bytes](https://img.shields.io/github/repo-size/BinayTripathi/ServiceVictoria-ChildrenInQueue.svg) 
-| --- | ---          | ---        | ---      | ---        | 
+
 
 ---------------------------------------
 
