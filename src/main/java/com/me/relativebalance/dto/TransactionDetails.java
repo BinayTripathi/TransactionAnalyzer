@@ -1,5 +1,6 @@
 package com.me.relativebalance.dto;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,8 +20,13 @@ import lombok.ToString;
 @ToString
 
 @Setter
-public class TransactionDetails {
+public class TransactionDetails implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@JsonProperty
 	@Getter
 	String transactionId;

@@ -46,7 +46,6 @@
 			<version>3.0</version>
 		</dependency>
 
-
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -65,6 +64,8 @@
 
 
 	</dependencies>
+	
+	
 
 	<build>
 		<plugins>
@@ -76,6 +77,34 @@
 					<target>9</target>
 				</configuration>
 			</plugin>
+
+
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- ... -->
+					<archive>
+						<manifest>
+							<mainClass>com.me.relativebalance.App</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					
+					
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
