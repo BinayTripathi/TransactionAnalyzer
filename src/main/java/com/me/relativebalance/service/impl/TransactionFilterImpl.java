@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import com.me.relativebalance.dto.InputArgs;
 import com.me.relativebalance.dto.OutputReport;
 import com.me.relativebalance.dto.TransactionDetails;
 import com.me.relativebalance.service.DataParser;
@@ -36,9 +37,13 @@ public class TransactionFilterImpl implements TransactionFilter {
 	}
 
 	@Override
-	public OutputReport getRelativeBalance(String account, Date fromDate, Date toDate) {
+	public OutputReport getRelativeBalance(InputArgs input) {
 
 		OutputReport report = new OutputReport(0.0, 0);
+		
+		String account = input.getAccountId();
+		Date fromDate = input.getFromDate(); 
+		Date toDate = input.getToDate();
 		
 		List<TransactionDetails> transactionList = dataParser.getAllTransaction().stream()
 				.takeWhile(txn -> txn.getCreatedAt().before(toDate))

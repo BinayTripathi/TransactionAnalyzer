@@ -28,8 +28,7 @@ public class TransactionAnalyzerImpl implements TransactionAnalyzer {
 		try {
 
 			InputArgs inputArgs = CommandLineArgsUtil.processCli(input);
-			OutputReport relativeBalanceReport = transactionFilter.getRelativeBalance(inputArgs.getAccountId(),
-					inputArgs.getFromDate(), inputArgs.getToDate());
+			OutputReport relativeBalanceReport = transactionFilter.getRelativeBalance(inputArgs);
 
 			return relativeBalanceReport;
 		} catch (ParseException e) {
