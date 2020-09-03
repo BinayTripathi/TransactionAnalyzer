@@ -38,10 +38,7 @@ public class CsvDataParser implements DataParser {
 				new File(getClass().getClassLoader().getResource("transaction.csv").getFile()))) {
 			MappingIterator<TransactionDetails> mapItr = oReader.readValues(reader);
 			while (mapItr.hasNext()) {
-				
-				TransactionDetails next = mapItr.next();
-				System.out.println(next.toString());
-				allTransactions.add(next);
+				allTransactions.add( mapItr.next());
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
