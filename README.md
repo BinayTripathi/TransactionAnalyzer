@@ -58,7 +58,7 @@ The overall objective of the applications :
 >   
 >   2. Enter following command to build the project : **mvn clean install** 
 >   
->   3. Enter following command to run the project with its default configuration: **java -jar target\\TransactionAnalyzer-0.0.1-SNAPSHOT.jar accountId:ACC334455 from:20/10/2018 12:00:00   to:20/10/2018 19:00:00**
+>   3. Enter following command to run the project with its default configuration: **java -jar target\TransactionAnalyzer-0.0.1-SNAPSHOT-jar-with-dependencies.jar accountId:ACC334455 from:20/10/2018 12:00:00 to:20/10/2018 19:00:00**
 >   
 ##### To open the project in Eclipse
 >   1. Open **Eclipse** .
