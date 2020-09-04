@@ -22,8 +22,12 @@ The overall objective of the applications :
 >   To demonstrate a simple application design
 
 >   Effective usage of Java 8/9 stream features for better readibility and performance
-
->   Integration test case to demonstrate the working application
+>   
+>  Used guice as a light weight dependency injection framework.
+>  
+>  Facade design pattern is used to hide the internal complexity. Class TransactionAnalyzerImpl is handles the complete orchastration for the execution flow
+>  
+>  Integration test case to demonstrate the working application
 
 ```
 
@@ -45,7 +49,7 @@ The overall objective of the applications :
 
 ##### Project Setup detail
 
->   1. Please clone or download the repository from [![github](https://img.shields.io/badge/git-hub-blue.svg?style=plastic)]https://github.com/BinayTripathi/TransactionAnalyzer) 
+>   1. Please clone or download the repository from [![github](https://img.shields.io/badge/git-hub-blue.svg?style=plastic)](https://github.com/BinayTripathi/TransactionAnalyzer) 
 >   
 #####  To build / run the application
 
