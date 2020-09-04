@@ -22,12 +22,13 @@ The overall objective of the applications :
 >   To demonstrate a simple application design
 
 >   Effective usage of Java 8/9 stream features for better readibility and performance
->   
+
 >  Used guice as a light weight dependency injection framework.
->  
->  Facade design pattern is used to hide the internal complexity. Class TransactionAnalyzerImpl is handles the complete orchastration for the execution flow
->  
+ 
+>  Facade design pattern is used to hide the internal complexity. Class TransactionAnalyzerImpl handles the complete orchastration for the execution flow
+  
 >  Integration test case to demonstrate the working application
+
 
 ```
 
