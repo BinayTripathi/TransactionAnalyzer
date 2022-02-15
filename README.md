@@ -13,7 +13,7 @@ The repository consists of projects as below:
 
 | # |Project Name | Project detail| Environment |
 | ---| ---  | ---            | --- |
-| 1 | TransactionAnalyzer| To analyze sequential transaction to obtain relative balance| [![.Java](https://img.shields.io/badge/Java-9-blue.svg?style=plastic)](https://start.spring.io/)|
+| 1 | TransactionAnalyzer| To analyze sequential transaction to obtain relative balance| [![.Java](https://img.shields.io/badge/Java-16-blue.svg?style=plastic)](https://start.spring.io/)|
 
 ### Summary
 
@@ -45,7 +45,7 @@ The overall objective of the applications :
 > Download/install   	
 >	1.	[![Maven](https://img.shields.io/badge/Mavan-3.6.3-blue.svg?style=plastic)](https://maven.apache.org/download.cgi) to build project and run test suite
 >   
->   2. [![Java](https://img.shields.io/badge/Java-1.8_-blue.svg?style=plastic)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html) to run the project
+>   2. [![Java](https://img.shields.io/badge/Java-16_-blue.svg?style=plastic)](https://www.oracle.com/java/technologies/javase-jdk16-downloads.html) to run the project
 >   
 
 ##### Project Setup detail
@@ -61,7 +61,7 @@ The overall objective of the applications :
 >   3. Enter following command to run the project with its default configuration: **java -jar target\TransactionAnalyzer-0.0.1-SNAPSHOT-jar-with-dependencies.jar accountId:ACC334455 from:20/10/2018 12:00:00 to:20/10/2018 19:00:00**
 >   
 ##### To open the project in Eclipse
->   1. Open **Eclipse** .
+>   1. Open **Eclipse / IntelliJ** .
 >   2. Select **File** ->  **Import** and then select **Existing Maven Projects**
 >   3. Browse to  **TransactionAnalyzer** select pom.xml and click **Finish** to import the project.
 >   4. Run/Debug the project
