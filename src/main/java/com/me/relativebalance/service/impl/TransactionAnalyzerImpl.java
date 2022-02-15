@@ -31,7 +31,7 @@ public class TransactionAnalyzerImpl implements TransactionAnalyzer {
 			OutputReport relativeBalanceReport = transactionFilter.getRelativeBalance(inputArgs);
 
 			return relativeBalanceReport;
-		} catch (ParseException) {
+		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.me.relativebalance.dto.InputArgs;
-import org.apache.commons.cli.*;
 
 public class CommandLineArgsUtil {
 	
@@ -17,7 +16,12 @@ public class CommandLineArgsUtil {
 	private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat(datePattern);
 	
 	public static InputArgs processCli(String[] input) throws ParseException {
-
+		
+		if(null == input || input.length < 3) {
+			System.out.println("Please provid input");
+			return null;
+		}
+		
 		InputArgs inputArgs = new InputArgs();
 		
 		for(int index =0; index < input.length; index++) {
